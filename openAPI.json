@@ -1,0 +1,81 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Sample Serverless API",
+        "version": "2022-06-13"
+    },
+    "servers": [
+        {
+            "url": "{invokeUrl}/{basePath}",
+            "variables": {
+                "basePath": {
+                    "default": "v1"
+                },
+                "invokeUrl": {
+                    "default": "https://sampletestapi.url"
+                }
+            }
+        }
+    ],
+    "paths": {
+        "/ping": {
+            "get": {
+                "tags": [
+                    "Sample Tag"  
+                ],
+                "parameters": [],
+                "summary": "Sample API Get Endpoint",
+                "description": "Returns pong",
+                "responses": {
+                    "200": {
+                        "description": "200 response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Body"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                    "api_key": []
+                    }
+                ],
+                "x-amazon-apigateway-integration": {
+                    "httpMethod": "POST",
+                    "uri": "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws_region}:${aws_account_id}:function:${ping_lambda_name}$${stageVariables.lambda_version}/invocations",
+                    "responses": {
+                    "default": {
+                        "statusCode": "200"
+                    }
+                    },
+                    "passthroughBehavior": "when_no_match",
+                    "timeoutInMillis": 200,
+                    "type": "aws_proxy"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+          "Body": {
+            "type": "object",
+            "properties": 
+              {
+              "ping": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "name": "x-api-key",
+                "in": "header"
+            }
+        }
+    }
+}
