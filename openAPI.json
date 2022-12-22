@@ -38,11 +38,6 @@
                         }
                     }
                 },
-                "security": [
-                    {
-                    "api_key": []
-                    }
-                ],
                 "x-amazon-apigateway-integration": {
                     "httpMethod": "POST",
                     "uri": "arn:aws:apigateway:${aws_region}:lambda:path/2015-03-31/functions/arn:aws:lambda:${aws_region}:${aws_account_id}:function:${ping_lambda_name}$${stageVariables.lambda_version}/invocations",
@@ -69,13 +64,6 @@
               }
             }
           }
-        },
-        "securitySchemes": {
-            "api_key": {
-                "type": "apiKey",
-                "name": "x-api-key",
-                "in": "header"
-            }
         }
     }
 }

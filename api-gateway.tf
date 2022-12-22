@@ -38,5 +38,3 @@ resource "aws_api_gateway_stage" "v2" {
     lambda_version = "-v2"
   }
 }
-
-//  uri = "arn:aws:apigateway:${var.region}:lambda:path/2015-03-31/functions/${aws_lambda_function.my-lambda.arn}:$${stageVariables.lambdaAlias}/invocations"

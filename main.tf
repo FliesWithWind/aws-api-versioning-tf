@@ -6,9 +6,9 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "${var.project}-bucket-xyz"
+    bucket         = "ping-lambda-bucket-xyz"
     key            = "terraform.tfstate"
-    region = "eu-central-1"
+    region         = "eu-central-1"
   }
 }
 

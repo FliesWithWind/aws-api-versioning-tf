@@ -3,7 +3,7 @@ variable "ping_lambda_name" {
 }
 
 variable "project" {
-    defualt = "api-versioning"
+    default = "api-versioning"
 }
 
 variable "region" {
