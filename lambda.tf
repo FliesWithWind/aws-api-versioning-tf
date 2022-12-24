@@ -60,5 +60,4 @@ resource "aws_lambda_permission" "api_gateway_execution_permission_ping-v2" {
   function_name = aws_lambda_function.ping_lambda-v2.function_name
   principal     = "apigateway.amazonaws.com"
   source_arn    = "${aws_api_gateway_rest_api.api-serverless.execution_arn}/*/*/*"
-  #source_arn    = "arn:aws:execute-api:eu-central-1:652100786796:9bmo93eqs4" 
 }

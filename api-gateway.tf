@@ -1,6 +1,6 @@
 resource "aws_api_gateway_rest_api" "api-serverless" {
-  name        = "APIServerless"
-  description = "Hello from Serverless API"
+  name        = "API Serverless Versionign Example"
+  description = "Serverless API with some versioning"
   body        = data.template_file.api-serverless_swagger.rendered
 }
 
